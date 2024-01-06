@@ -1,0 +1,46 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "Default",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "displayName": "VCPKG Default",
+      "hidden": true,
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TESTS": true
+      }
+    },
+    {
+      "name": "Release",
+      "displayName": "VCPKG Release",
+      "inherits": "Default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "VCPKG_BUILD_TYPE": "release"
+      }
+    },
+    {
+      "name": "Debug",
+      "displayName": "VCPKG Debug",
+      "inherits": "Default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "VCPKG_BUILD_TYPE": "debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "Release",
+      "configurePreset": "Release",
+      "configuration": "Release"
+    },
+    {
+      "name": "Debug",
+      "configurePreset": "Debug",
+      "configuration": "Debug"
+    }
+  ]
+}
